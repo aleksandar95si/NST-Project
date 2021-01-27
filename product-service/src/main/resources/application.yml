@@ -4,3 +4,12 @@ server:
 spring:
    application: 
      name: PRODUCT-SERVICE
+   datasource:
+       url: jdbc:mysql://localhost/nst_master_2021
+       username: root
+       password: ar0207995
+       driver-class-name: com.mysql.jdbc.Driver
+   jpa:    hibernate:      naming:        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl       
+     
+     
