@@ -7,7 +7,7 @@ public class Product implements Serializable {
 	
 	private Long productId;
 	private String name;
-	private int price;
+	private Long price;
 	
 	private ProductGroup productGroup;
 	
@@ -27,10 +27,10 @@ public class Product implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getPrice() {
+	public Long getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(Long price) {
 		this.price = price;
 	}
 	public ProductGroup getProductGroup() {

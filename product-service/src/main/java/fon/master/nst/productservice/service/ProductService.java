@@ -2,16 +2,15 @@ package fon.master.nst.productservice.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationDetails;
-import org.springframework.stereotype.Service;
+import javax.transaction.Transactional;
 
-import fon.master.nst.productservice.config.CurrUser;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import fon.master.nst.productservice.model.Product;
 import fon.master.nst.productservice.repository.ProductRepository;
 
 @Service
+@Transactional
 public class ProductService {
 
 	@Autowired
@@ -26,13 +25,14 @@ public class ProductService {
 	}
 
 	public Product findByProductId(Long productId) {
-		System.out.println("ODRADIO SAM");
 		return productRepository.findByProductId(productId);
 	}
 	
-	
-	
 	public void addProduct(Product product) {
 		productRepository.save(product);
+	}
+
+	public void deleteById(Long id) {
+		productRepository.deleteById(id);	
 	}
 }

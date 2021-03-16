@@ -32,12 +32,10 @@ public class ShoppingCartService {
 	@Autowired
 	private CurrentLoggedInUserService currentLoggedInUserService;
 	
-	
 	public void addItem(Long productId) {
 		
 	// 1) Proveriti da li postoji korpa za datog Usera, ako ne postoji napraviti je
 		ShoppingCart currShopCart;
-		
 		currShopCart=getShoppingCart();
 		if(currShopCart==null) {
 			currShopCart=new ShoppingCart(currentLoggedInUserService.getCurrentUser()); 		
@@ -56,17 +54,16 @@ public class ShoppingCartService {
 		CartItem cartItem=new CartItem(currShopCart);
 		cartItem.setProductId(currProd.getProductId());
 		cartItem.setProductName(currProd.getName());
-		cartItem.setPrice(Long.valueOf(currProd.getPrice()));
+		cartItem.setPrice(currProd.getPrice());
+	
 	// 4) Dodati item u listu Item-a korpe
-		
 		List<CartItem> lista=new ArrayList<>();
 		lista.add(cartItem);
 		currShopCart.setCartItem(lista);
 		currShopCart.setBill(currShopCart.getBill()+cartItem.getPrice());
-		// 7) Sacuvati Cart i Item
-		shoppingCartRepository.save(currShopCart);	
-		//cartItemRepository.save(cartItem);
-		
+
+	// 5) Sacuvati ShoppingCart
+		shoppingCartRepository.save(currShopCart);		
 	}
 
 	public ShoppingCart getShoppingCart() {
@@ -77,8 +74,7 @@ public class ShoppingCartService {
 		CartItem item=cartItemRepository.findByItemId(itemId);
 		ShoppingCart cart=shoppingCartRepository.findByCartItemItemId(item.getItemId());
 		cart.setBill(cart.getBill()-item.getPrice());
-		cartItemRepository.deleteById(itemId);
-		
+		cartItemRepository.deleteById(itemId);		
 	}
 	
 	public void deleteCart(Long cartId) {
@@ -92,6 +88,7 @@ public class ShoppingCartService {
 	public CartItem getItem(Long cartId) {
 		return cartItemRepository.findByItemId(cartId);
 	}
+	
 	// postoji samo zbog provere da li funkcija radi - OBRISATI
 	public Product getProductFromShopCart(Long productId) {
 		HttpHeaders httpHeader=new HttpHeaders();
