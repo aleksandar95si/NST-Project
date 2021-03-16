@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationDetails;
 import org.springframework.stereotype.Service;
 
+import fon.master.nst.productservice.config.CurrUser;
 import fon.master.nst.productservice.model.Product;
 import fon.master.nst.productservice.repository.ProductRepository;
 
@@ -27,6 +29,8 @@ public class ProductService {
 		System.out.println("ODRADIO SAM");
 		return productRepository.findByProductId(productId);
 	}
+	
+	
 	
 	public void addProduct(Product product) {
 		productRepository.save(product);
