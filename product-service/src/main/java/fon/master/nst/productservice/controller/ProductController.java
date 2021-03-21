@@ -41,6 +41,10 @@ public class ProductController {
 		return productService.findByProductId(productId);	
 	}
 	
+	@GetMapping("/group/all")
+	public List<ProductGroup> getAllGroups() {
+		return productService.getAllGroups();	}
+	
 	@PostMapping(value="/add",  consumes = "application/json")
 	public void addProduct(@RequestBody Product product) {
 		productService.addProduct(product);
