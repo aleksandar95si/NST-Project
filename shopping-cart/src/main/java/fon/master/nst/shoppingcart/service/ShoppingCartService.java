@@ -67,6 +67,7 @@ public class ShoppingCartService {
 	}
 
 	public ShoppingCart getShoppingCart() {
+		System.out.println(currentLoggedInUserService.getCurrentUser());
 		return shoppingCartRepository.findByUsername(currentLoggedInUserService.getCurrentUser());
 	}
 	

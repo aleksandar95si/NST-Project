@@ -5,6 +5,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import fon.master.nst.userservice.model.User;
+import fon.master.nst.userservice.repository.TokenRepository;
 import fon.master.nst.userservice.repository.UserRepository;
 
 @Service
@@ -12,6 +13,8 @@ public class UserService {
 	
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private TokenRepository tokenRepository;
 	
 	public void addUser(User user) {
 		User userSave=new User();
@@ -21,4 +24,7 @@ public class UserService {
 		userRepository.save(userSave);
 	}
 	
+	public void logout(String accessToken) {
+		tokenRepository.deleteByTokenId(accessToken);
+	}
 }
