@@ -25,6 +25,6 @@ public class OrderController {
 	
 	@PostMapping("/submit")
 	public void getOrderItemsAndsendEmail() {
-		emailService.getOrderItemsAndsendEmail("a.risticc95@gmail.com");
+		emailService.getOrderItemsAndsendEmail(""); //hardkotovati mejl primaoca radi testiranja
 	}
 }

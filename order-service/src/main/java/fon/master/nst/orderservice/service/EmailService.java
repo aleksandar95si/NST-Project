@@ -20,29 +20,31 @@ public class EmailService {
 	private RestTemplate restTemplate;
 	@Autowired
 	private JavaMailSender javaMailSender;
+	@Autowired
+	private CurrentLoggedInUserService currentLoggedInUserService;
 	
 
 	public void getOrderItemsAndsendEmail(String recipient) {
 		HttpHeaders httpHeaders=new HttpHeaders();
 		httpHeaders.add("Authorization", AccesTokenService.getAccesToken());
 		HttpEntity<ShoppingCart> httpEntity=new HttpEntity<>(httpHeaders);
-		ResponseEntity<ShoppingCart> responseEntity=restTemplate.exchange("http://SHOPING-CART/cart/get", HttpMethod.GET, httpEntity, ShoppingCart.class);
+		ResponseEntity<ShoppingCart> responseEntity=restTemplate.exchange("http://SHOPPING-CART/cart/get", HttpMethod.GET, httpEntity, ShoppingCart.class);
 		ShoppingCart shoppingCart=responseEntity.getBody();
-		String order="";
+		String order="ID: 	 NAZIV:	  CENA:\r\n \r\n";
 		for(CartItem cartItem : shoppingCart.getCartItem()) {
-			order=order + " " +cartItem.getProductId() + " " + cartItem.getProductName() + " " + cartItem.getPrice() + "\r\n";
+			order=order + cartItem.getProductId() + " " + cartItem.getProductName() + " " + cartItem.getPrice() + "\r\n";
 		}
 		
-		order=order+"\r\n \r\n"+"Ukupan iznos: "+shoppingCart.getBill();
+		order=order+"\r\n \r\n"+"Ukupan iznos: "+shoppingCart.getBill()+" dinara";
 		
 		sendMail(recipient, order);
 	}
 	
 	public void sendMail(String recipient, String order) {
 		SimpleMailMessage sms=new SimpleMailMessage();
-		sms.setFrom("test-sender-mail");
+		sms.setFrom("nst.mail.sender.test@gmail.com");
 		sms.setTo(recipient);
-		sms.setSubject("Porudžbina korisnika:" + AccesTokenService.getAccesToken());
+		sms.setSubject("Porudžbina korisnika: " + currentLoggedInUserService.getCurrentUser());
 		sms.setText(order);
 		javaMailSender.send(sms);
 	}
