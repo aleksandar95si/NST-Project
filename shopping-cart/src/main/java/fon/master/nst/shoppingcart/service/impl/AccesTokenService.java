@@ -1,4 +1,4 @@
-package fon.master.nst.shoppingcart.service;
+package fon.master.nst.shoppingcart.service.impl;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationDetails;

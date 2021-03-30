@@ -1,4 +1,4 @@
-package fon.master.nst.shoppingcart.service;
+package fon.master.nst.shoppingcart.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,10 +18,11 @@ import fon.master.nst.shoppingcart.model.CartItem;
 import fon.master.nst.shoppingcart.model.ShoppingCart;
 import fon.master.nst.shoppingcart.repository.CartItemRepository;
 import fon.master.nst.shoppingcart.repository.ShoppingCartRepository;
+import fon.master.nst.shoppingcart.service.ShoppingCartService;
 
 @Service
 @Transactional
-public class ShoppingCartService {
+public class ShoppingCartServiceImpl implements ShoppingCartService {
 	
 	@Autowired
 	private ShoppingCartRepository shoppingCartRepository;
@@ -91,16 +92,5 @@ public class ShoppingCartService {
 
 	public CartItem getItem(Long cartId) {
 		return cartItemRepository.findByItemId(cartId);
-	}
-	
-	// postoji samo zbog provere da li funkcija radi - OBRISATI
-	public Product getProductFromShopCart(Long productId) {
-		HttpHeaders httpHeader=new HttpHeaders();
-		httpHeader.add("Authorization", AccesTokenService.getAccesToken());
-		HttpEntity<Product> productEntity=new HttpEntity<>(httpHeader);
-		ResponseEntity<Product> responseEntity=restTemplate.exchange("http://PRODUCT-SERVICE/products/"+productId,
-																	HttpMethod.GET, productEntity, Product.class);
-		Product currProd=responseEntity.getBody();
-		return currProd;
 	}
 }

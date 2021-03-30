@@ -1,4 +1,4 @@
-package fon.master.nst.orderservice.service;
+package fon.master.nst.orderservice.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -12,9 +12,10 @@ import org.springframework.web.client.RestTemplate;
 
 import fon.master.nst.orderservice.dto.CartItem;
 import fon.master.nst.orderservice.dto.ShoppingCart;
+import fon.master.nst.orderservice.service.EmailService;
 
 @Service
-public class EmailService {
+public class EmailServiceImpl implements EmailService{
 
 	@Autowired
 	private RestTemplate restTemplate;

@@ -1,4 +1,4 @@
-package fon.master.nst.oauthserver.crossfilter;
+package fon.master.nst.oauthserver.corsfilter;
 
 import java.io.IOException;
 
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
-public class CrossFilter implements Filter {
+public class CorsFilter implements Filter {
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
