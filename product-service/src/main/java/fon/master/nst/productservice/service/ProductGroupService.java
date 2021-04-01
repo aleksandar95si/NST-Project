@@ -10,4 +10,5 @@ public interface ProductGroupService {
 	void addProductGroup(ProductGroup productGroup);
 	ProductGroup findByName(String name) throws ProductGroupException;
 	List<ProductGroup> getAllGroups() throws ProductGroupException;
+	
 }

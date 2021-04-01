@@ -18,14 +18,14 @@ public class OrderController {
 	
 	/*
 	@PostMapping("/submit/{recipient}")
-	public void getOrderItemsAndsendEmail(@PathVariable("recipient") String recipient) {
-		emailService.getOrderItemsAndsendEmail(recipient);
+	public void getOrderItemsAndSendEmail(@PathVariable("recipient") String recipient) {
+		emailService.getOrderItemsAndSendEmail(recipient);
 	}
 	*/
 	
 	@PostMapping("/submit")
-	public ResponseEntity getOrderItemsAndsendEmail() {
-		emailServiceImpl.getOrderItemsAndsendEmail(""); //hardkotovati mejl primaoca radi testiranja
+	public ResponseEntity getOrderItemsAndSendEmail() {
+		emailServiceImpl.getOrderItemsAndSendEmail(""); //hardkotovati mejl primaoca radi testiranja
 		return new ResponseEntity(HttpStatus.NO_CONTENT);
 	}
 }

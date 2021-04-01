@@ -24,14 +24,17 @@ public class EmailServiceImpl implements EmailService{
 	@Autowired
 	private CurrentLoggedInUserService currentLoggedInUserService;
 	
-
-	public void getOrderItemsAndsendEmail(String recipient) {
+	public void getOrderItemsAndSendEmail(String recipient) {
+		
 		HttpHeaders httpHeaders=new HttpHeaders();
 		httpHeaders.add("Authorization", AccesTokenService.getAccesToken());
 		HttpEntity<ShoppingCart> httpEntity=new HttpEntity<>(httpHeaders);
 		ResponseEntity<ShoppingCart> responseEntity=restTemplate.exchange("http://SHOPPING-CART/cart/get", HttpMethod.GET, httpEntity, ShoppingCart.class);
+		
 		ShoppingCart shoppingCart=responseEntity.getBody();
+		
 		String order="ID: 	 NAZIV:	  CENA:\r\n \r\n";
+		
 		for(CartItem cartItem : shoppingCart.getCartItem()) {
 			order=order + cartItem.getProductId() + " " + cartItem.getProductName() + " " + cartItem.getPrice() + "\r\n";
 		}

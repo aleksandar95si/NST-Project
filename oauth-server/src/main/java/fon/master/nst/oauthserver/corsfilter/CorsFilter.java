@@ -30,8 +30,6 @@ public class CorsFilter implements Filter {
 		res.setHeader("Access-Control-Allow-Headers",
 				"x-requested-with, authorization, content-type");
 		
-	//	res.setHeader("Access-Control-Allow-Credentials", "true");
-		
 		if("OPTIONS".equalsIgnoreCase(req.getMethod())) {
 			res.setStatus(HttpServletResponse.SC_OK);
 		} else {

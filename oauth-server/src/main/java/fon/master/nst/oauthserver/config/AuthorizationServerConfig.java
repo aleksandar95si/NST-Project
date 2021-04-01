@@ -40,11 +40,9 @@ public class AuthorizationServerConfig implements AuthorizationServerConfigurer 
 
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		
 	    clients
 	    		.jdbc(dataSource)
 		        .passwordEncoder(passwordEncoder);
-		
 	}
 
 	@Override

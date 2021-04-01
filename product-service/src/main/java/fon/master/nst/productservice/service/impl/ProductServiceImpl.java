@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 
 import fon.master.nst.productservice.exceptions.ProductGroupException;
 import fon.master.nst.productservice.model.Product;
-import fon.master.nst.productservice.model.ProductGroup;
-import fon.master.nst.productservice.repository.ProductGroupRepository;
 import fon.master.nst.productservice.repository.ProductRepository;
 import fon.master.nst.productservice.service.ProductService;
 
@@ -48,6 +46,5 @@ public class ProductServiceImpl implements ProductService {
 	public void deleteById(Long id) {
 		productRepository.deleteById(id);	
 	}
-
 
 }
