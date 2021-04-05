@@ -5,7 +5,7 @@ import fon.master.nst.shoppingcart.model.ShoppingCart;
 
 public interface ShoppingCartService {
 
-	public void addItem(Long productId);
+	void addItem(Long productId);
 	ShoppingCart getShoppingCart();
 	void removeCartItem(Long itemId);
 	ShoppingCart getCartById(Long cartId);

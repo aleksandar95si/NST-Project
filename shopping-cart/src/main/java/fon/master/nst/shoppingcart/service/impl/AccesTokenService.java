@@ -6,7 +6,6 @@ import org.springframework.security.oauth2.provider.authentication.OAuth2Authent
 public class AccesTokenService {
 
 	public static String getAccesToken() {
-		
 		OAuth2AuthenticationDetails authenticationDetails=(OAuth2AuthenticationDetails) SecurityContextHolder.getContext().getAuthentication().getDetails();
         return authenticationDetails.getTokenType().concat(" ").concat(authenticationDetails.getTokenValue());
 	} 

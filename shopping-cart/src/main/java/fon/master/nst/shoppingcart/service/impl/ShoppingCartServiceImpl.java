@@ -2,7 +2,6 @@ package fon.master.nst.shoppingcart.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -43,7 +42,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 			currShopCart.setBill(0L);
 		}
 	
-	// 2) Pronadji ID proizvoda
+	// 2) Pronadji proizvod
 		HttpHeaders httpHeader=new HttpHeaders();
 		httpHeader.add("Authorization", AccesTokenService.getAccesToken());
 		HttpEntity<Product> productEntity=new HttpEntity<>(httpHeader);
@@ -51,7 +50,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 																	HttpMethod.GET, productEntity, Product.class);
 		Product currProd=responseEntity.getBody();
 		
-	// 3) Napraviti novi CartItem, dodeliti mi ID proizvoda i ime i povezati sa Cart-om 
+	// 3) Napraviti novi CartItem, dodeliti mu ID proizvoda i ime i povezati sa Cart-om 
 		CartItem cartItem=new CartItem(currShopCart);
 		cartItem.setProductId(currProd.getProductId());
 		cartItem.setProductName(currProd.getName());
