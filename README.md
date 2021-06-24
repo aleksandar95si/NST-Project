@@ -1,6 +1,6 @@
 # PharmacyShop app - Backend
 
-This is backend of PharmacyShop Web app (click [here](https://github.com/aleksandar95si/NST-Project-Frontend) for frontend). App was made for an exam project of subjects Advanced Java technologies 1 and Advanced Java technologies 2 on Faculty of Organization Science, University of Belgrade.
+This is backend of PharmacyShop Web app (click [here](https://github.com/aleksandar95si/NST-Project-Frontend) for frontend). App was made for an exam project of subjects Advanced Java technologies 1 and Advanced Java technologies 2 on Faculty of Organization Sciences, University of Belgrade.
 
 ### App Architecture
 
